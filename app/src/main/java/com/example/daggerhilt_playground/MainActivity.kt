@@ -1,19 +1,12 @@
 package com.example.daggerhilt_playground
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import dagger.Module
-import dagger.Provides
-import dagger.hilt.InstallIn
+import androidx.appcompat.app.AppCompatActivity
+import com.google.gson.Gson
 import dagger.hilt.android.AndroidEntryPoint
-import dagger.hilt.android.components.ActivityComponent
-import dagger.hilt.android.components.FragmentComponent
 import dagger.hilt.android.scopes.ActivityScoped
-import dagger.hilt.android.scopes.FragmentScoped
-import dagger.hilt.components.SingletonComponent
 import javax.inject.Inject
-import javax.inject.Singleton
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -24,54 +17,56 @@ class MainActivity : AppCompatActivity() {
     @Inject
     lateinit var cappuccinoMaker: CappuccinoMaker
 
-    @Inject
-    lateinit var cappuccinoMaker2: CappuccinoMaker
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        Log.d(TAG, "onCreate: cappuccino: ${cappuccinoMaker.hashCode()}")
-        Log.d(TAG, "onCreate: cappuccino: ${cappuccinoMaker2.hashCode()}")
+        Log.d(TAG, "onCreate: cappuccino: ${cappuccinoMaker.makeTheCappuccino()}")
+
     }
 }
 
-//field injection example
-//@Singleton
+@ActivityScoped
 class CappuccinoMaker
-//@Inject
+@Inject
 constructor(
-    //constructor injection example
-    private val milkHeater: MilkHeater
+    private val espressoMaker: EspressoMaker,
+    private val milkHeater: MilkHeater,
+    private val gson: Gson
 ) {
 
-    fun makeTheEspresso(): String {
-        return "Espresso have been made"
-    }
-
-    fun makeTheMilkHot(): String {
-        return milkHeater.makeTheMilkHot()
+    fun makeTheCappuccino(): String {
+        Log.d("MainActivity", "makeTheCappuccino: ${espressoMaker.makeTheEspresso()}")
+        Log.d("MainActivity", "makeTheCappuccino: ${milkHeater.makeTheMilkHot()}")
+        Log.d("MainActivity", "myGSON: ${gson.hashCode()}")
+        return "Cappuccino have been made"
     }
 
 }
 
-//constructor injection example
-class MilkHeater
-@Inject
-constructor() {
+interface MilkHeater {
+    fun makeTheMilkHot(): String
+}
 
-    fun makeTheMilkHot(): String {
+class GasMilkHeater
+@Inject
+constructor() : MilkHeater {
+
+    override fun makeTheMilkHot(): String {
         return "Milk is ready"
     }
 
 }
 
-@Module
-@InstallIn(ActivityComponent::class)
-object SomeModule {
-    @Provides
-    @ActivityScoped
-    fun provideCappuccinoMaker(milkHeater: MilkHeater): CappuccinoMaker {
-        return CappuccinoMaker(milkHeater)
-    }
+interface EspressoMaker {
+    fun makeTheEspresso(): String
 }
+
+class ElectricEspressoMaker : EspressoMaker {
+
+    override fun makeTheEspresso(): String {
+        return "Espresso is ready"
+    }
+
+}
+
