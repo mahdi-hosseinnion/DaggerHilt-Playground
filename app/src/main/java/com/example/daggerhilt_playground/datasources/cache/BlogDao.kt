@@ -12,5 +12,5 @@ interface BlogDao {
     suspend fun insertBlog(blog: BlogCacheEntity): Long
 
     @Query("SELECT * FROM blogs")
-   suspend fun getAllOfBlogs(): List<BlogCacheEntity>
+    suspend fun getAllOfBlogs(): List<BlogCacheEntity>
 }
