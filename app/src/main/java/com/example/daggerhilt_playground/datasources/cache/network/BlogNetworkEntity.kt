@@ -1,4 +1,4 @@
-package com.example.daggerhilt_playground.network
+package com.example.daggerhilt_playground.datasources.cache.network
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName

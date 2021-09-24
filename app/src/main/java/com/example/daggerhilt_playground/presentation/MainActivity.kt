@@ -1,7 +1,8 @@
-package com.example.daggerhilt_playground
+package com.example.daggerhilt_playground.presentation
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.example.daggerhilt_playground.R
 
 class MainActivity : AppCompatActivity() {
 

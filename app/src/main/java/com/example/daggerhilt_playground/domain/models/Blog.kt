@@ -1,4 +1,4 @@
-package com.example.daggerhilt_playground.models
+package com.example.daggerhilt_playground.domain.models
 
 data class Blog(
     var id: Int,

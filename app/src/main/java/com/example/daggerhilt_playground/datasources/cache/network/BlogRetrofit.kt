@@ -1,4 +1,4 @@
-package com.example.daggerhilt_playground.network
+package com.example.daggerhilt_playground.datasources.cache.network
 
 import retrofit2.http.GET
 

@@ -1,6 +1,6 @@
-package com.example.daggerhilt_playground.network
+package com.example.daggerhilt_playground.datasources.cache.network
 
-import com.example.daggerhilt_playground.models.Blog
+import com.example.daggerhilt_playground.domain.models.Blog
 import com.example.daggerhilt_playground.util.EntityMapper
 
 object NetworkMapper : EntityMapper<BlogNetworkEntity, Blog> {
@@ -21,7 +21,9 @@ object NetworkMapper : EntityMapper<BlogNetworkEntity, Blog> {
         category = this.category
     )
 
-    fun List<BlogNetworkEntity>.mapToDomainList(): List<Blog> = this.map { it.mapToDomain() }
+    override fun List<BlogNetworkEntity>.mapToDomainList(): List<Blog> =
+        this.map { it.mapToDomain() }
 
-    fun List<Blog>.mapToEntityList(): List<BlogNetworkEntity> = this.map { it.mapToEntity() }
+    override fun List<Blog>.mapToEntityList(): List<BlogNetworkEntity> =
+        this.map { it.mapToEntity() }
 }

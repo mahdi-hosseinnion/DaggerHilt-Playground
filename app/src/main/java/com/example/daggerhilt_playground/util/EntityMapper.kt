@@ -6,4 +6,8 @@ interface EntityMapper<EntityModel, DomainModel> {
 
     fun DomainModel.mapToEntity(): EntityModel
 
+
+    fun List<EntityModel>.mapToDomainList(): List<DomainModel>
+
+    fun List<DomainModel>.mapToEntityList(): List<EntityModel>
 }
