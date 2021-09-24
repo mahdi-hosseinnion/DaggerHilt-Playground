@@ -3,7 +3,9 @@ package com.example.daggerhilt_playground.presentation
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.daggerhilt_playground.R
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private val TAG = "MainActivity"
