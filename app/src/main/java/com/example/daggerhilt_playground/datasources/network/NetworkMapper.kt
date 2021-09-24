@@ -1,4 +1,4 @@
-package com.example.daggerhilt_playground.datasources.cache.network
+package com.example.daggerhilt_playground.datasources.network
 
 import com.example.daggerhilt_playground.domain.models.Blog
 import com.example.daggerhilt_playground.util.EntityMapper
