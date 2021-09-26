@@ -67,7 +67,12 @@ dependencies {
     implementation("androidx.room:room-runtime:$room_version")
     implementation("androidx.room:room-ktx:$room_version")
     kapt "androidx.room:room-compiler:$room_version"
-
+    //fragment
+    def fragment_ktx = "1.2.5"
+    implementation "androidx.fragment:fragment-ktx:$fragment_ktx"
+    //live data for kotlin (predefined scopes in fragments/activities
+    def liveDataKotlin = '2.3.1'
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$liveDataKotlin"
 }
 // Allow references to generated code
 kapt {
