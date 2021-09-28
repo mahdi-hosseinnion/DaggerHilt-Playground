@@ -8,6 +8,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ApplicationComponent
+import java.util.*
 import javax.inject.Singleton
 
 @Module
@@ -25,5 +26,9 @@ object AppModule {
     @Singleton
     @Provides
     fun provideBlogName(): String = "Mahdi hosseinion awesome"
+
+    @Singleton
+    @Provides
+    fun provideDate(): Date = Date()
 }
 

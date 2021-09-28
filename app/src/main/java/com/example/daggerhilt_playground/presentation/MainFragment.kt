@@ -12,6 +12,8 @@ import com.example.daggerhilt_playground.R
 import com.example.daggerhilt_playground.domain.models.Blog
 import com.example.daggerhilt_playground.domain.utils.DataState
 import dagger.hilt.android.AndroidEntryPoint
+import java.util.*
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainFragment
@@ -19,6 +21,9 @@ constructor(
     //just for example (unnecessary variable)
     private val blogName: String
 ) : Fragment(R.layout.fragment_main) {
+
+    @Inject
+    lateinit var date: Date
 
     private val TAG = "MainFragment"
 
@@ -59,7 +64,9 @@ constructor(
         progressBar?.visibility = View.GONE
         val blogsTitleList = list.map { "\n" + it.title }
         txt?.setTextColor(Color.BLACK)
-        txt?.text = "Hello it's $blogName blog \nblog titles: \n ${blogsTitleList}"
+        txt?.text = "Hello it's $blogName blog \nblog titles: \n ${blogsTitleList}" +
+                "\n" +
+                "current time: ${date.time}"
     }
 
     private fun handleErrorCase(exception: Exception) {
