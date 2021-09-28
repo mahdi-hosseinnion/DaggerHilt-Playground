@@ -21,5 +21,9 @@ object AppModule {
             blogDao = blogDao,
             blogRetrofit = blogRetrofit
         )
+
+    @Singleton
+    @Provides
+    fun provideBlogName(): String = "Mahdi hosseinion awesome"
 }
 

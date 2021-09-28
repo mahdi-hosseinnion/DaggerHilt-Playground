@@ -73,6 +73,10 @@ dependencies {
     //live data for kotlin (predefined scopes in fragments/activities
     def liveDataKotlin = '2.3.1'
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$liveDataKotlin"
+    //navigation component
+    def navigation = '2.3.5'
+    implementation "androidx.navigation:navigation-fragment-ktx:$navigation"
+    implementation "androidx.navigation:navigation-ui-ktx:$navigation"
 }
 // Allow references to generated code
 kapt {
