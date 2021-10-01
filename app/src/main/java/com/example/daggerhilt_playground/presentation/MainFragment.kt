@@ -38,6 +38,9 @@ constructor(
         txt = view.findViewById(R.id.text)
         progressBar = view.findViewById(R.id.progress_bar)
 
+        Log.d(TAG, "onViewCreated: blogName: $blogName")
+        Log.d(TAG, "onViewCreated: date: ${date.time}")
+
         subscribeObservers()
     }
 

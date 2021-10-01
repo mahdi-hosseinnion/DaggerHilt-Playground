@@ -16,14 +16,6 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun provideMainRepository(blogDao: BlogDao, blogRetrofit: BlogRetrofit): MainRepository =
-        MainRepository(
-            blogDao = blogDao,
-            blogRetrofit = blogRetrofit
-        )
-
-    @Singleton
-    @Provides
     fun provideBlogName(): String = "Mahdi hosseinion awesome"
 
     @Singleton
