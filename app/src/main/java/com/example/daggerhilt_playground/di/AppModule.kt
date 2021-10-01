@@ -3,16 +3,15 @@ package com.example.daggerhilt_playground.di
 import com.example.daggerhilt_playground.datasources.cache.BlogDao
 import com.example.daggerhilt_playground.datasources.network.BlogRetrofit
 import com.example.daggerhilt_playground.datasources.repositories.MainRepository
-import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ApplicationComponent
+import dagger.hilt.components.SingletonComponent
 import java.util.*
 import javax.inject.Singleton
 
 @Module
-@InstallIn(ApplicationComponent::class)
+@InstallIn(SingletonComponent::class)
 object AppModule {
 
     @Singleton
