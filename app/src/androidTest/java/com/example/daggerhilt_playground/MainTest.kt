@@ -1,6 +1,5 @@
 package com.example.daggerhilt_playground
 
-import androidx.fragment.app.testing.launchFragmentInContainer
 import androidx.test.core.app.launchActivity
 import androidx.test.espresso.matcher.ViewMatchers.assertThat
 import com.example.daggerhilt_playground.di.AppModule
@@ -9,14 +8,12 @@ import com.example.daggerhilt_playground.presentation.MainFragment
 import com.example.daggerhilt_playground.presentation.MainFragmentFactory
 import dagger.Module
 import dagger.Provides
-import dagger.hilt.InstallIn
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
-import dagger.hilt.android.testing.UninstallModules
 import dagger.hilt.components.SingletonComponent
+import dagger.hilt.testing.TestInstallIn
 import junit.framework.Assert.assertSame
 import org.hamcrest.CoreMatchers.containsString
-import org.junit.Assert
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -24,7 +21,6 @@ import java.util.*
 import javax.inject.Inject
 import javax.inject.Singleton
 
-@UninstallModules(AppModule::class)
 @HiltAndroidTest
 class MainTest {
 
@@ -63,7 +59,10 @@ class MainTest {
 }
 
 @Module
-@InstallIn(SingletonComponent::class)
+@TestInstallIn(
+    components = [SingletonComponent::class],
+    replaces = [AppModule::class]
+)
 object TestAppModule {
     @Singleton
     @Provides
